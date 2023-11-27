@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
+const userRoutes = require('./routes/users')
 
 
 const app = express()
@@ -20,6 +21,17 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
 
+
+
+app.use((req, res, next)=>{
+    console.log(req.path, req.method)
+    next()
+  })
+
+
+//routes
+
+app.use('/users', userRoutes)
 
 mongoose.connect(process.env.MONGO_URI).
 then(()=>{
