@@ -11,10 +11,6 @@ const createToken = (_id, email) => {
   }
 
 
-
-
-
-
 const signUp = async(req, res) =>{
 
     const { name, email, password} = req.body;
